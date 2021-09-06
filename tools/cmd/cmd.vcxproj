@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\fpnn-sdk\base;$(SolutionDir)\fpnn-sdk\proto;$(SolutionDir)\fpnn-sdk\proto\msgpack;$(SolutionDir)\fpnn-sdk\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\fpnn-sdk\base;$(SolutionDir)\fpnn-sdk\proto;$(SolutionDir)\fpnn-sdk\proto\msgpack;$(SolutionDir)\fpnn-sdk\core</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,6 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\fpnn-sdk\base;$(SolutionDir)\fpnn-sdk\proto;$(SolutionDir)\fpnn-sdk\proto\msgpack;$(SolutionDir)\fpnn-sdk\core</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,6 +145,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\fpnn-sdk\base;$(SolutionDir)\fpnn-sdk\proto;$(SolutionDir)\fpnn-sdk\proto\msgpack;$(SolutionDir)\fpnn-sdk\core</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
