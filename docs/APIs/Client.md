@@ -314,7 +314,7 @@
 
 用于 Java、Unity、Go、C# 等语言封装 C++ SDK 时，C++ SDK 将收到的 FPNN 协议数据不经解包解码，直接转发给上层语言进行处理。
 
-具体请参见 [嵌入模式](../embedMode.md) 及 [embedTypes.h](../../src/core/embedTypes.h) 内注释。
+具体请参见 [嵌入模式](../embedMode.md) 及 [embedTypes.h](../../fpnn-sdk/core/embedTypes.h) 内注释。
 
 #### embed_sendData
 

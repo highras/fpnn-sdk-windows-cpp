@@ -2,7 +2,7 @@
 
 ** 注意 **
 
-* 错误代码的具体定义可以参见 [FpnnError.h](../src/base/FpnnError.h)
+* 错误代码的具体定义可以参见 [FpnnError.h](../fpnn-sdk/base/FpnnError.h)
 * 下表中未列出的错误代码，不会被 SDK 使用，仅因历史原因，或者未来考虑，而保留。
 * 服务器可能会返回额外的错误代码，需参考具体业务定义，以及服务端所使用的 [FPNN Framework](https://github.com/highras/fpnn) 对应版本的错误码说明。
 

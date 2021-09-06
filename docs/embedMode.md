@@ -39,7 +39,7 @@
 
 			void EmbedRecvNotifyDelegate(uint64_t connectionId, const void* buffer, int length);
 
-		具体请参见 [embedTypes.h](../src/core/embedTypes.h)。
+		具体请参见 [embedTypes.h](../fpnn-sdk/core/embedTypes.h)。
 
 	* **直收接口设置接口**
 
@@ -54,7 +54,7 @@
 
 * Client/TCPClient/UDPClient 的 embed_sendData() 接口为异步接口，同步发送需要上层封装。上层封装可参见：
 
-	+ C++： [SyncedAnswerCallback](../src/core/AnswerCallbacks.h)
+	+ C++： [SyncedAnswerCallback](../fpnn-sdk/core/AnswerCallbacks.h)
 	+ C#：  [SyncAnswerCallback](https://github.com/highras/fpnn-sdk-csharp/blob/master/fpnn-sdk/AnswerCallback.cs)
 	+ Java：[SyncAnswerCallback](https://github.com/highras/fpnn-sdk-java/blob/master/src/main/java/com/fpnn/sdk/SyncAnswerCallback.java)
 
