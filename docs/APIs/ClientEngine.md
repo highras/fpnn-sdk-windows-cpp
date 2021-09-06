@@ -161,7 +161,7 @@ ClientEngine 创建接口。
 
 #### setDestructorCleanupAction
 
-		inline void setDestructorCleanupAction(std::function<void ()> cleanupAction);
+	inline void setDestructorCleanupAction(std::function<void ()> cleanupAction);
 
 设置 ClientEngine 析构函数返回前，需执行的清理函数。
 
@@ -172,6 +172,6 @@ ClientEngine 创建接口。
 
 #### enableDestructorCleanupAction
 
-		inline void enableDestructorCleanupAction(bool enable);
+	inline void enableDestructorCleanupAction(bool enable);
 
 是否在 ClientEngine 析构函数返回前，执行设置的清理函数。如果不执行，则 ClientEngine 在没有设置清理函数时，也不会调用 `WSACleanup()` 函数。
