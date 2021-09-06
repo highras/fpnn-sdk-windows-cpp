@@ -45,6 +45,9 @@ ClientEngine 为全局的 Client(TCP Client & UDP Client) 和网络连接的管�
 
 		inline static bool runTask(std::shared_ptr<ITaskThreadPool::ITask> task);
 		inline static bool runTask(std::function<void ()> task);
+
+		inline void setDestructorCleanupAction(std::function<void ()> cleanupAction);
+		inline void enableDestructorCleanupAction(bool enable);
 	};
 
 ### 创建与构造
@@ -155,3 +158,20 @@ ClientEngine 创建接口。
 * **`std::function<void ()> task`**
 
 	不带参数的无返回值的 lambda 函数。
+
+#### setDestructorCleanupAction
+
+		inline void setDestructorCleanupAction(std::function<void ()> cleanupAction);
+
+设置 ClientEngine 析构函数返回前，需执行的清理函数。
+
+**注意**
+
+* ClientEngine 一般是在 main() 函数返回后，才会开始析构。
+* 默认情况下，ClientEngine 析构最后，会调用 `WSACleanup()` 函数。设置需要执行的清理函数后，将改变这一行为。此时 ClientEngine 将不再调用 `WSACleanup()` 函数。
+
+#### enableDestructorCleanupAction
+
+		inline void enableDestructorCleanupAction(bool enable);
+
+是否在 ClientEngine 析构函数返回前，执行设置的清理函数。如果不执行，则 ClientEngine 在没有设置清理函数时，也不会调用 `WSACleanup()` 函数。
