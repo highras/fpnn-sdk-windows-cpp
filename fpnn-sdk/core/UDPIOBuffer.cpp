@@ -686,7 +686,7 @@ bool UDPIOBuffer::prepareSegmentedDataSection(int sectionCount)
 		flag |= ARQFlag::ARQ_Discardable;
 
 	_currentSendingBuffer.setComponentFlag(componentBegin, flag);
-	_currentSendingBuffer.setComponentBytes(componentBegin, bytes);
+	_currentSendingBuffer.setComponentBytes(componentBegin, bytes + ARQConstant::SegmentPackageSeqSize + idxSize);
 
 	uint8_t* segmentBegin = componentBegin + ARQConstant::SectionHeaderSize;
 	_currentSendingBuffer.setDataComponentPackageSeq(segmentBegin, _packageIdNumber);
@@ -706,7 +706,7 @@ bool UDPIOBuffer::prepareSegmentedDataSection(int sectionCount)
 	return true;
 }
 
-void UDPIOBuffer::prepareFirstSegmentedDataSection(size_t availableSpace)
+bool UDPIOBuffer::prepareFirstSegmentedDataSection(size_t availableSpace)
 {
 	uint8_t* componentBegin = _currentSendingBuffer.dataBuffer + _currentSendingBuffer.dataLength;
 	_currentSendingBuffer.setComponentType(componentBegin, ARQType::ARQ_DATA);
@@ -722,9 +722,12 @@ void UDPIOBuffer::prepareFirstSegmentedDataSection(size_t availableSpace)
 	_currentSendingBuffer.setComponentFlag(componentBegin, flag);
 
 	const size_t indexSize = 1;
+	if (availableSpace < ARQConstant::SegmentPackageSeqSize + indexSize)
+		return false;
+
 	size_t bytes = availableSpace - ARQConstant::SegmentPackageSeqSize - indexSize;
 
-	_currentSendingBuffer.setComponentBytes(componentBegin, bytes);
+	_currentSendingBuffer.setComponentBytes(componentBegin, bytes + ARQConstant::SegmentPackageSeqSize + indexSize);
 
 	_packageIdNumber += 1;
 	//---------- assemble -----------//
@@ -743,6 +746,8 @@ void UDPIOBuffer::prepareFirstSegmentedDataSection(size_t availableSpace)
 	_sendingSegmentInfo.data = dataUnit;
 	_sendingSegmentInfo.nextIndex = 2;
 	_sendingSegmentInfo.offset = bytes;
+
+	return true;
 }
 
 void UDPIOBuffer::prepareSingleDataSection(size_t availableSpace)
@@ -797,7 +802,7 @@ bool UDPIOBuffer::prepareDataSection(int sectionCount)
 	if (!segmented)
 		prepareSingleDataSection(remainedSpace);
 	else
-		prepareFirstSegmentedDataSection(remainedSpace);
+		return prepareFirstSegmentedDataSection(remainedSpace);
 
 	return true;
 }
